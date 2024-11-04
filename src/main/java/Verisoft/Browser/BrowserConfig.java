@@ -1,23 +1,43 @@
-package Verisoft.General.Browser;
+package Verisoft.Browser;
 
+import Verisoft.Wait.WaitHandler;
 import io.github.bonigarcia.wdm.WebDriverManager;
-/**
- * The BrowserConfig class is responsible for setting up the
- * WebDriver environment for browser automation.
- * It configures the WebDriver for the Chrome browser
- * using WebDriverManager, which handles driver binaries
- * automatically.
- */
+import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
+
+@Slf4j
 public class BrowserConfig {
+    private final ConfigReader config;
+    private final WaitHandler waiter;
     /**
-     * Sets up the WebDriver for Chrome by using WebDriverManager.
-     * This method will ensure that the appropriate version of
-     * the ChromeDriver is downloaded and set up for use
-     * with Selenium WebDriver.
+     * Constructor for BrowserConfig.
+     *
+     * @param waiter an instance of WaitHandler to handle wait operations.
      */
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
+    public BrowserConfig(WaitHandler waiter) {
+        this.config = ConfigReader.getInstance();
+        this.waiter = waiter;
     }
 
+    public Browser createBrowser(String browserTypeStr) {
+        if (browserTypeStr == null || browserTypeStr.isEmpty()) {
+            browserTypeStr = config.getProperty("browser.type", "chrome").toLowerCase();
+        }
+        BrowserType browserType = BrowserType.valueOf(browserTypeStr.toLowerCase());
+        log.info("Creating browser instance of type: {}", browserType);
+        try {
+            Browser browser = BrowserFactory.createDriver(browserType);
+            String url = config.getProperty("test.url");
+            browser.open(url);
+            return browser;
+        } catch (Exception e) {
+            throw new AutomationException("Failed to initialize browser", e);
+
+        }
+    }
 }
+

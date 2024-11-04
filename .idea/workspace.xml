@@ -5,19 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea63d158-7ac1-43b7-a947-22095dc08f26" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Coding_Conventions.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/AutomationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/EdgeBrowser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/FirefoxBrowser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Screenshot/ScreenshotManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Wait/Waiter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/BrowserTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/Browser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/ChromeBrowser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/ChromeBrowser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/ConfigReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Wait/WaitHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Wait/WaitHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Wait/Waitable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestSetup.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2nN5nZemtYkvEykkdkfF8alV6GD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -26,11 +52,85 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.BrowserTests.executor": "Run",
+    "JUnit.BrowserTests.testOpenUrlInAllBrowsers.executor": "Run",
+    "JUnit.BrowserTests.testOpenUrlInBrowser.executor": "Run",
+    "JUnit.BrowserTests.testOpenUrlInChrome.executor": "Run",
+    "JUnit.TestSetup.testSomething.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user1/תרגול/verisoft/projectShoshi",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user1\תרגול\verisoft\projectShoshi\src\main\java\Verisoft\Browser" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BrowserTests.testOpenUrlInBrowser">
+    <configuration name="BrowserTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectShoshi" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BrowserTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BrowserTests.testOpenUrlInAllBrowsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectShoshi" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BrowserTests" />
+      <option name="METHOD_NAME" value="testOpenUrlInAllBrowsers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BrowserTests.testOpenUrlInBrowser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectShoshi" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BrowserTests" />
+      <option name="METHOD_NAME" value="testOpenUrlInBrowser(Verisoft.Browser.BrowserType)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BrowserTests.testOpenUrlInChrome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectShoshi" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BrowserTests" />
+      <option name="METHOD_NAME" value="testOpenUrlInChrome" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSetup.testSomething" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectShoshi" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestSetup" />
+      <option name="METHOD_NAME" value="testSomething" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BrowserTests.testOpenUrlInBrowser" />
+        <item itemvalue="JUnit.BrowserTests.testOpenUrlInAllBrowsers" />
+        <item itemvalue="JUnit.BrowserTests.testOpenUrlInChrome" />
+        <item itemvalue="JUnit.BrowserTests" />
+        <item itemvalue="JUnit.TestSetup.testSomething" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,5 +141,30 @@
       <updated>1728800863881</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserConfig.java</url>
+          <line>25</line>
+          <properties class="Verisoft.Browser.BrowserConfig" method="createBrowser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserFactory.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/BrowserTests.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
