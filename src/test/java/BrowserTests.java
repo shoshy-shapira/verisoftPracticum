@@ -1,177 +1,87 @@
 import Verisoft.Browser.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import Verisoft.ErrorHandler.ErrorHandler;
+import Verisoft.Screenshot.ScreenshotManager;
+import org.junit.jupiter.api.*;
+import java.io.InputStream;
+import java.util.Properties;
+import org.apache.logging.log4j.Logger;
+import Verisoft.Logger.LoggerManager;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class BrowserTests {
+    private  Browser browser;
+    private static String url;
+    private static BrowserType browserType;
+    private static final Logger logger = LoggerManager.getLogger(BrowserTests.class);
+    private ErrorHandler errorHandler;
+    private ScreenshotManager screenshotManager;
 
-    private WebDriver chromeDriver;
-    // private WebDriver firefoxDriver;
-    private WebDriver edgeDriver;
 
-    private ChromeBrowser chromeBrowser;
-    //private FirefoxBrowser firefoxBrowser;
-    private EdgeBrowser edgeBrowser;
+    @BeforeAll
+    static void loadConfig() {
+        System.setProperty("log4j2.configurationFile", "log4j2.xml");
+        logger.info("Loading configuration...");
+
+        // Load the configuration properties once before all tests
+        Properties config = new Properties();
+        try (InputStream input = BrowserTests.class.getClassLoader().getResourceAsStream("config.properties")) {
+            config.load(input);
+            url = config.getProperty("browser.url", "https://www.google.com"); // Default to Google if not set
+            String browserTypeStr = config.getProperty("browser.type", "chrome").toUpperCase();
+            browserType = BrowserType.valueOf(browserTypeStr);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load config file", e);
+        }
+    }
 
     @BeforeEach
     void setUp() {
-        try {
-            // Use WebDriverManager instead of System.setProperty
-            WebDriverManager.chromedriver().setup();
-            chromeDriver = new ChromeDriver();
-            chromeBrowser = new ChromeBrowser(chromeDriver);
+        logger.info("Setting up browser...");
 
-//            WebDriverManager.firefoxdriver().setup();
-//            firefoxDriver = new FirefoxDriver();
-//            firefoxBrowser = new FirefoxBrowser(firefoxDriver);
+        // Initialize ScreenshotManager and ErrorHandler
+        screenshotManager = new ScreenshotManager();
+        errorHandler = new ErrorHandler(screenshotManager);
 
-            WebDriverManager.edgedriver().setup();
-            edgeDriver = new EdgeDriver();
-            edgeBrowser = new EdgeBrowser(edgeDriver);
-
-        } catch (Exception e) {
-            tearDown(); // Ensure cleanup if initialization fails
-            throw e;
-        }
+        // Initialize the browser using the factory and maximize
+        browser = BrowserFactory.createDriver(browserType);
+        browser.maximize(); // Maximize the browser window at the start
     }
 
     @AfterEach
     void tearDown() {
-        // Safely quit each driver
-        if (chromeDriver != null) {
-            try {
-                chromeDriver.quit();
-            } catch (Exception e) {
-                // Log the exception but continue cleanup
-                e.printStackTrace();
-            }
+        if (browser != null) {
+            browser.quit();
+        }
+        browser = null;
+        logger.info("Closing browser...");
+
+
+    }
+    @Test
+    void testOpenUrl() {
+        logger.info("Opening URL: " + url);
+        try {
+            browser.open(url);
+            assertEquals("Gogle", browser.getDriver().getTitle());
+            logger.info("Tested URL opening successfully.");
+        }
+        catch (AssertionError ae) {
+            // Handle assertion errors specifically
+            errorHandler.handleSpecificThrowable(ae, browser);
+            fail("Assertion failed while testing URL opening: " + ae.getMessage());
+        } catch (Exception e)
+        {
+            // Handle error using ErrorHandler if an exception occurs
+            errorHandler.handleSpecificThrowable(e, browser);
+            fail("Exception occurred while testing URL opening: " + e.getMessage());
+
         }
 
-//        if (firefoxDriver != null) {
-//            try {
-//                firefoxDriver.quit();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-
-        if (edgeDriver != null) {
-            try {
-                edgeDriver.quit();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Set all references to null
-        chromeDriver = null;
-        // firefoxDriver = null;
-        edgeDriver = null;
-        chromeBrowser = null;
-        // firefoxBrowser = null;
-        edgeBrowser = null;
     }
 
-    /**
-     * Tests the ability to open a URL in various browsers.
-     *
-     * <p>This is a parameterized test that runs the same test logic for each
-     * browser type defined in the {@link BrowserType} enum. It creates an instance
-     * of the specified browser, opens the Google homepage, and asserts that the
-     * title of the page is "Google". This ensures that the browser correctly
-     * navigates to the expected URL and retrieves the correct page title.</p>
-     *
-     * @param browserType The type of browser to test, provided by
-     *                    {@link EnumSource} using the {@link BrowserType} enum.
-     */
 
-    @ParameterizedTest
-    @EnumSource(BrowserType.class)
-    // משתמש בערכי enum של BrowserType
-    void testOpenUrlInBrowser(BrowserType browserType) {
-        Browser browser = BrowserFactory.createDriver(browserType);
-        browser.open("https://www.google.com");
-        assertEquals("Google", browser.getDriver().getTitle());
-    }
-
-    @Test
-    void testOpenUrlInAllBrowsers() {
-        List<Browser> browsers = Arrays.asList(chromeBrowser, edgeBrowser);
-
-        for (Browser browser : browsers) {
-            System.out.println("Testing in: " + browser.getClass());
-            browser.open("https://www.google.com");
-            String title = browser.getDriver().getTitle();
-            assertEquals("Google", title);
-        }
-    }
-
-    @Test
-    void testOpenUrlInChrome() {
-        chromeBrowser.open("https://www.google.com");
-        assertEquals("Google", chromeBrowser.getDriver().getTitle());
-    }
-
-//    @Test
-//    void testOpenUrlInFirefox() {
-//        firefoxBrowser.open("https://www.example.com");
-//        assertEquals("Example Domain", firefoxBrowser.getDriver().getTitle());
-//    }
-
-    @Test
-    void testOpenUrlInEdge() {
-        edgeBrowser.open("https://www.google.com");
-        assertEquals("Google", edgeBrowser.getDriver().getTitle());
-    }
-
-    @Test
-    void testMaximizeChrome() {
-        chromeBrowser.maximize();
-        // Additional assertions can be made here if needed
-    }
-
-//    @Test
-//    void testMaximizeFirefox() {
-//        firefoxBrowser.maximize();
-//        // Additional assertions can be made here if needed
-//    }
-
-    @Test
-    void testMaximizeEdge() {
-        edgeBrowser.maximize();
-        // Additional assertions can be made here if needed
-    }
-
-    @Test
-    void testTakeScreenshotInChrome() {
-        String screenshotPath = chromeBrowser.takeScreenshot("chrome_screenshot");
-        assertTrue(screenshotPath.endsWith(".png"));
-    }
-
-//    @Test
-//    void testTakeScreenshotInFirefox() {
-//        String screenshotPath = firefoxBrowser.takeScreenshot("firefox_screenshot");
-//        assertTrue(screenshotPath.endsWith(".png"));
-//    }
-
-    @Test
-    void testTakeScreenshotInEdge() {
-        String screenshotPath = edgeBrowser.takeScreenshot("edge_screenshot");
-        assertTrue(screenshotPath.endsWith(".png"));
-    }
 }
+
 

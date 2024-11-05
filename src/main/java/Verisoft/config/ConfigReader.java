@@ -1,6 +1,7 @@
-package Verisoft.Browser;
+package Verisoft.config;
 
-import java.io.FileInputStream;
+import Verisoft.Browser.AutomationException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;

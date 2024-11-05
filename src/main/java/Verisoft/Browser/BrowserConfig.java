@@ -1,18 +1,15 @@
 package Verisoft.Browser;
 
 import Verisoft.Wait.WaitHandler;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import Verisoft.config.ConfigReader;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 @Slf4j
 public class BrowserConfig {
     private final ConfigReader config;
     private final WaitHandler waiter;
+
     /**
      * Constructor for BrowserConfig.
      *
@@ -23,10 +20,10 @@ public class BrowserConfig {
         this.waiter = waiter;
     }
 
-    public Browser createBrowser(String browserTypeStr) {
-        if (browserTypeStr == null || browserTypeStr.isEmpty()) {
-            browserTypeStr = config.getProperty("browser.type", "chrome").toLowerCase();
-        }
+    public Browser createBrowser() {
+        // Retrieve the browser type from the configuration file, defaulting to "chrome" if not specified, and convert to lowercase.
+        String browserTypeStr = config.getProperty("browser.type", "chrome").toLowerCase();
+        //Convert the browser type string to the corresponding BrowserType enum constant, handling case insensitivity.
         BrowserType browserType = BrowserType.valueOf(browserTypeStr.toLowerCase());
         log.info("Creating browser instance of type: {}", browserType);
         try {

@@ -14,13 +14,18 @@ import java.time.format.DateTimeFormatter;
 public class ScreenshotManager {
 
     private static final String SCREENSHOTS_DIR = "test-output/screenshots/";
+    private static final String ERROR_SCREENSHOTS_DIR = SCREENSHOTS_DIR + "errors/";
 
     public ScreenshotManager() {
-        createScreenshotsDirectory();
+        createScreenshotsDirectory(SCREENSHOTS_DIR);
+        createScreenshotsDirectory(ERROR_SCREENSHOTS_DIR);
     }
-
-    private void createScreenshotsDirectory() {
-        File directory = new File(SCREENSHOTS_DIR);
+    // Getter for ERROR_SCREENSHOTS_DIR
+    public String getErrorScreenshotsDir() {
+        return ERROR_SCREENSHOTS_DIR;
+    }
+    private void createScreenshotsDirectory(String nameFile) {
+        File directory = new File(nameFile);
         if (!directory.exists()) {
             directory.mkdirs();
         }
