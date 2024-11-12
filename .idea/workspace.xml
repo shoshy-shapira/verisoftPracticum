@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea63d158-7ac1-43b7-a947-22095dc08f26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/LIfeCycle/LifecycleCallbacks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/LIfeCycle/TestResultWatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/locators/LocatorAliexpress.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/automation.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/automation.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/ClickActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/ClickActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/ElementActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/ElementActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BrowserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BrowserTests.java" afterDir="false" />
     </list>
@@ -159,7 +160,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/BrowserTests.java</url>
-          <line>70</line>
+          <line>91</line>
           <properties class="BrowserTests" method="testOpenUrl">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -173,7 +174,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BrowserTests.java</url>
-          <line>18</line>
+          <line>25</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

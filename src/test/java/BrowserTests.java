@@ -3,12 +3,19 @@ import Verisoft.ErrorHandler.ErrorHandler;
 import Verisoft.LIfeCycle.LifecycleCallbacks;
 import Verisoft.LIfeCycle.TestResultWatcher;
 import Verisoft.Screenshot.ScreenshotManager;
+import Verisoft.Wait.WaitHandler;
+import Verisoft.elementActions.ElementActions;
+import Verisoft.locators.LocatorManager;
+import locators.LocatorAliexpress;
 import org.junit.jupiter.api.*;
+
 import java.io.InputStream;
 import java.util.Properties;
+
 import org.apache.logging.log4j.Logger;
 import Verisoft.Logger.LoggerManager;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,13 +24,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(TestResultWatcher.class)
 
 public class BrowserTests {
-    private  Browser browser;
+    private Browser browser;
     private static String url;
     private static String currentUrl;
     private static BrowserType browserType;
     private static final Logger logger = LoggerManager.getLogger(BrowserTests.class);
     private ErrorHandler errorHandler;
     private ScreenshotManager screenshotManager;
+    private LocatorManager locatorManager;
+    private ElementActions elementActions;
+    private WaitHandler waitHandler;
+
 
 
     @BeforeAll
@@ -48,13 +59,22 @@ public class BrowserTests {
     void setUp() {
         logger.info("Setting up browser...");
 
-        // Initialize ScreenshotManager and ErrorHandler
+        // Initialize ScreenshotManager and ErrorHandler and LocatorManager
         screenshotManager = new ScreenshotManager();
         errorHandler = new ErrorHandler(screenshotManager);
+        locatorManager = new LocatorManager();
+
 
         // Initialize the browser using the factory and maximize
         browser = BrowserFactory.createDriver(browserType);
         browser.maximize(); // Maximize the browser window at the start
+        waitHandler = new WaitHandler(browser.getDriver());
+        elementActions = new ElementActions(browser.getDriver(),waitHandler);
+        // Load locators from LocatorConfigLoader
+        LocatorAliexpress.loadLocators(locatorManager);
+
+
+
     }
 
     @AfterEach
@@ -67,13 +87,14 @@ public class BrowserTests {
 
 
     }
+
     @Test
     void testOpenUrl() {
         logger.info("Opening URL: " + url);
         try {
             browser.open(url);
             // Verify that the current URL matches the expected URL
-            assertEquals(currentUrl, "https://mra.menora.co.il/my.policy", "Failed to navigate to the correct URL.");
+            assertEquals(currentUrl, "https://he.aliexpress.com", "Failed to navigate to the correct URL.");
 
             logger.info("Tested URL opening successfully.");
         } catch (AssertionError ae) {
@@ -85,6 +106,20 @@ public class BrowserTests {
             errorHandler.handleSpecificThrowable(e, browser);
             fail("Exception occurred while testing URL opening: " + e.getMessage());
         }
+
+        // Wait for header link to be visible and clickable, then click using ElementActions
+        By linkAliexpress = locatorManager.getLocator("linkAliexpress");
+        elementActions.clickElement(linkAliexpress);
+        logger.info("Clicked on linkAliexpress link successfully.");
+
+        By search = locatorManager.getLocator("search");
+        elementActions.enterText(search,"בובה לילדה");
+        logger.info("enterText to search successfully");
+
+        By buttonSearch=locatorManager.getLocator("buttonSearch");
+        elementActions.clickElement(buttonSearch);
+        logger.info("click to search successfully");
+
     }
 }
 

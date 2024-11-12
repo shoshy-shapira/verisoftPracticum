@@ -1,5 +1,6 @@
 package Verisoft.elementActions;
 
+import Verisoft.Wait.WaitHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -7,11 +8,13 @@ public class ElementActions {
     private final ClickActions clickActions;
     private final InputActions inputActions;
     private final ScrollActions scrollActions;
+    private final WaitHandler waitHandler;
 
-    public ElementActions(WebDriver driver) {
-        this.clickActions = new ClickActions(driver);
+    public ElementActions(WebDriver driver, WaitHandler waitHandler) {
+        this.clickActions = new ClickActions(driver,waitHandler);
         this.inputActions = new InputActions(driver);
         this.scrollActions = new ScrollActions(driver);
+        this.waitHandler = waitHandler;
 
     }
     public void clickElement(By lactor){
