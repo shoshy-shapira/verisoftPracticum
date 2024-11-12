@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea63d158-7ac1-43b7-a947-22095dc08f26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/ErrorHandler/ErrorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Logger/LoggerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/ClickActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/ElementActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/InputActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/elementActions/ScrollActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/locators/LocatorManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/LIfeCycle/LifecycleCallbacks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Verisoft/LIfeCycle/TestResultWatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/Browser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/BrowserConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/ChromeBrowser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Browser/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/config/ConfigReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Verisoft/Screenshot/ScreenshotManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Verisoft/Screenshot/ScreenshotManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/automation.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/automation.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BrowserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BrowserTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +159,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/BrowserTests.java</url>
-          <line>62</line>
+          <line>70</line>
           <properties class="BrowserTests" method="testOpenUrl">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -184,7 +173,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BrowserTests.java</url>
-          <line>12</line>
+          <line>18</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
